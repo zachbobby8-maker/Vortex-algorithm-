@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinter | The Vortex Engine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-slate-300 overflow-hidden font-inter select-none">
+  <!-- Interactive Fluid Canvas -->
+  <canvas id="vortexCanvas" class="absolute inset-0 z-0 cursor-crosshair"></canvas>
+
+  <!-- Dashboard UI Overlay -->
+  <div class="relative z-10 w-full h-screen pointer-events-none p-4 md:p-8 flex flex-col justify-between">
+    
+    <!-- Top Header -->
+    <header class="flex justify-between items-start">
+      <div>
+        <h1 class="text-3xl md:text-5xl font-bold text-white tracking-widest uppercase flex items-center gap-4">
+          <span class="text-cyan-400 font-mono">[</span>SINTER<span class="text-cyan-400 font-mono">]</span>
+        </h1>
+        <p class="text-cyan-400/80 font-mono text-xs md:text-sm mt-2 uppercase tracking-widest border-l-2 border-cyan-500/50 pl-3">
+          The Vortex Engine &middot; Economic Laminar Flow
+        </p>
+      </div>
+      
+      <div class="hidden md:block text-right bg-slate-900/60 border border-slate-700/50 backdrop-blur-md p-4 rounded-sm">
+        <div class="text-[10px] text-slate-400 font-mono uppercase mb-1">System Status</div>
+        <div class="text-emerald-400 font-mono text-sm flex items-center gap-2 justify-end">
+          <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+          Zero-Viscosity Liquidity Active
+        </div>
+      </div>
+    </header>
+
+    <!-- Side Panels & Resonance Graph -->
+    <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-2">
+      
+      <!-- Metrics Panel -->
+      <div class="bg-slate-900/60 border border-slate-700/50 backdrop-blur-md p-5 rounded-sm w-full md:w-80 pointer-events-auto">
+        <h2 class="text-xs text-cyan-400 font-mono uppercase tracking-widest mb-4 border-b border-cyan-900 pb-2">Macroeconomic Dashboard</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-[10px] text-slate-400 font-mono uppercase mb-1">
+              <span>Systemic Viscosity (μ)</span>
+              <span class="text-white">0.002 μ</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+              <div class="bg-cyan-400 h-full w-[2%]"></div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="flex justify-between text-[10px] text-slate-400 font-mono uppercase mb-1">
+              <span>Syntropy Dividend</span>
+              <span class="text-emerald-400 font-bold">+14.2%</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+              <div class="bg-emerald-400 h-full w-[74%]"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-[10px] text-slate-400 font-mono uppercase mb-1">
+              <span>Active Nodes / Labor</span>
+              <span class="text-white" id="nodeCount">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 text-[10px] leading-relaxed text-slate-500 font-mono border-l hover:border-cyan-400 border-slate-700 pl-3 transition-colors">
+          Pressure Gradient Prediction (∇p) active. Move cursor to simulate high-pressure opportunity zones and direct capital flow.
+        </div>
+      </div>
+
+      <!-- Resonance Pulse Graph -->
+      <div class="bg-slate-900/60 border border-slate-700/50 backdrop-blur-md p-5 rounded-sm w-full md:w-96 pointer-events-auto flex flex-col justify-between">
+        <div class="flex justify-between items-center mb-3">
+          <h2 class="text-xs text-cyan-400 font-mono uppercase tracking-widest">Resonance Pulse</h2>
+          <span class="text-[10px] font-mono" id="pulseStatus">HARMONIC PHASE</span>
+        </div>
+        
+        <div class="w-full h-24 bg-black/50 border border-slate-800 relative rounded-sm overflow-hidden mb-3">
+          <canvas id="resonanceCanvas" class="absolute inset-0 w-full h-full"></canvas>
+          <!-- Grid Overlay -->
+          <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCI+PHBhdGggZD0iTTEwIDBMMCAwaDB2MTBoMTBWMCJmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg==')] opacity-50"></div>
+        </div>
+
+        <div class="flex justify-between text-[10px] text-slate-400 font-mono uppercase">
+          <span id="injectionEvent" class="text-emerald-400 opacity-0 transition-opacity duration-300">INJECTION EVENT TRIGGERED</span>
+          <span>Freq: <span id="freqDisplay" class="text-white">432 Hz</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
